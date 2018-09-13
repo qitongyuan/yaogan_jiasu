@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>工作台</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+<link rel="stylesheet" href="/semantic-ui/semantic.min.css">
+<link rel="stylesheet" href="/resource/Tree/bootstrap-treeview.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/fileinput.min.css">
+<link rel="stylesheet"
+	href="/resource/js_css_Upload/fileinput-rtl.min.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/theme.min.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/piexif.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/resource/js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/resource/js/bootstrap.min.js"></script>
+<script src="/semantic-ui/semantic.min.js"></script>
+<script src="/resource/Tree/bootstrap-treeview.js"></script>
+<script src="/resource/js_css_Upload/fileinput.min.js"></script>
+<script src="/resource/js_css_Upload/piexif.min.js"></script>
+<script src="/resource/js_css_Upload/sortable.js"></script>
+<script src="/resource/js_css_Upload/theme.min.js"></script>
+<script src="/resource/js_css_Upload/zh.js"></script>
+</head>
+
+<body>
+	<div style="padding: 0px; margin: 0px;">
+		<ul class="breadcrumb" style="padding: 0px; padding-left: 10px;">
+			<li><a href="#">首页</a></li>
+			<li>图像上传</li>
+		</ul>
+	</div>
+	<!-- 分割线 -->
+	<h2 class="ui horizontal inverted divider"></h2>
+	<h2 class="ui horizontal inverted divider">
+		<p class="text-muted">NDVI算法</p>
+	</h2>
+
+	<!-- 选择服务器配置 -->
+	<!-- 服务器1 -->
+	<div
+		style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float: left; clear: right;">
+		<div class="ui card"
+			data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+			<div class="image">
+				<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+			</div>
+			<div class="content">
+				<div class="header">曾宪梓四楼高性能工作站</div>
+				<div class="description">两块Quadro M4000显卡 GPU计算能力为5.2</div>
+			</div>
+			<div class="ui two bottom attached buttons">
+				<div id="test_connect" class="ui button">
+					<i class="add icon"></i> 测试
+				</div>
+				<div id="sendXml" class="ui primary button">
+					<i class="play icon"></i> 执行
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 服务器2 -->
+	<div
+		style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float: left; clear: right;">
+		<div class="ui card"
+			data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+			<div class="image">
+				<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+			</div>
+			<div class="content">
+				<div class="header">尚未配备</div>
+				<div class="description">机器正在筹备，敬请期待 欢迎你的使用</div>
+			</div>
+			<div class="ui two bottom attached buttons">
+				<div class="ui button">
+					<i class="add icon"></i> 测试
+				</div>
+				<div class="ui primary button">
+					<i class="play icon"></i> 执行
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 服务器3 -->
+	<div
+		style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float: left; clear: right;">
+		<div class="ui card"
+			data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+			<div class="image">
+				<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+			</div>
+			<div class="content">
+				<div class="header">尚未配备</div>
+				<div class="description">机器正在配置环境，敬请期待 欢迎你的使用</div>
+			</div>
+			<div class="ui two bottom attached buttons">
+				<div class="ui button">
+					<i class="add icon"></i> 测试
+				</div>
+				<div class="ui primary button">
+					<i class="play icon"></i> 执行
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- 服务器4 -->
+	<div
+		style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float: left; clear: right;">
+		<div class="ui card"
+			data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+			<div class="image">
+				<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+			</div>
+			<div class="content">
+				<div class="header">尚未配备</div>
+				<div class="description">机器正在配置环境，敬请期待 欢迎你的使用</div>
+			</div>
+			<div class="ui two bottom attached buttons">
+				<div class="ui button">
+					<i class="add icon"></i> 测试
+				</div>
+				<div class="ui primary button">
+					<i class="play icon"></i> 执行
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<!-- 分割线 -->
+	<h1 class="ui horizontal inverted divider">
+		<p class="text-muted">——————</p>
+	</h1>
+	<h2 class="ui horizontal inverted divider"></h2>
+	<h2 class="ui horizontal inverted divider">
+		<p class="text-muted">最大似然算法</p>
+	</h2>
+
+    <!-- 服务器1 -->
+	<div
+		style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float: left; clear: right;">
+		<div class="ui card"
+			data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+			<div class="image">
+				<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+			</div>
+			<div class="content">
+				<div class="header">尚未配备</div>
+				<div class="description">机器正在筹备，敬请期待 欢迎你的使用</div>
+			</div>
+			<div class="ui two bottom attached buttons">
+				<div class="ui button">
+					<i class="add icon"></i> 测试
+				</div>
+				<div class="ui primary button">
+					<i class="play icon"></i> 执行
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 服务器2 -->
+	<div
+		style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float: left; clear: right;">
+		<div class="ui card"
+			data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+			<div class="image">
+				<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+			</div>
+			<div class="content">
+				<div class="header">尚未配备</div>
+				<div class="description">机器正在筹备，敬请期待 欢迎你的使用</div>
+			</div>
+			<div class="ui two bottom attached buttons">
+				<div class="ui button">
+					<i class="add icon"></i> 测试
+				</div>
+				<div class="ui primary button">
+					<i class="play icon"></i> 执行
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 服务器3 -->
+	<div
+		style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float: left; clear: right;">
+		<div class="ui card"
+			data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+			<div class="image">
+				<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+			</div>
+			<div class="content">
+				<div class="header">尚未配备</div>
+				<div class="description">机器正在配置环境，敬请期待 欢迎你的使用</div>
+			</div>
+			<div class="ui two bottom attached buttons">
+				<div class="ui button">
+					<i class="add icon"></i> 测试
+				</div>
+				<div class="ui primary button">
+					<i class="play icon"></i> 执行
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- 服务器4 -->
+	<div
+		style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float: left; clear: right;">
+		<div class="ui card"
+			data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+			<div class="image">
+				<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+			</div>
+			<div class="content">
+				<div class="header">尚未配备</div>
+				<div class="description">机器正在配置环境，敬请期待 欢迎你的使用</div>
+			</div>
+			<div class="ui two bottom attached buttons">
+				<div class="ui button">
+					<i class="add icon"></i> 测试
+				</div>
+				<div class="ui primary button">
+					<i class="play icon"></i> 执行
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$("#test_connect").click(function() {
+			/* 向服务器发送测试指令，看能与Linux服务器建立链接不 */
+			$.ajax({
+				type : 'POST',
+				url : "/exec/testConnect",
+				success : function(data) {
+					alert(data);
+				},
+				error : function() {
+					alert("连接失败，请与管理员进行联系");
+				}
+			});
+		});
+
+		//Todo 有问题注销登录还能上传图片，未解决
+		$("#sendXml").click(function() {
+			 var RedImage = '<%= session.getAttribute("Red_Image")%>';
+			 var NirImage = '<%= session.getAttribute("Nir_Image")%>';
+			if(RedImage!=null&&NirImage!=null&&RedImage!=""&&NirImage!=""){
+				/* 向服务器发送测试指令，看能与Linux服务器建立链接不 */
+				$.ajax({
+					type : 'POST',
+					url : "/exec/sendXml",
+					success : function(data) {
+						alert(data);
+					},
+					error : function() {
+						alert("请先上传图像，谢谢");
+					}
+				});
+			}else{
+				alert("图片已经过期！请重新上传");
+			}
+		});
+	</script>
+</body>
+</html>

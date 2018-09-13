@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>遥感专题</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+<link rel="stylesheet"
+	href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/me.css">
+</head>
+<body style="height: 100%; margin: 0">
+
+<!-- 	<br>
+	<br>
+	<br> -->
+	<div id="container" style="height: 100%" ></div>
+<!-- 	<div class="m-container-small m-padded-tb-massive"
+		style="max-width: 30em !important"> -->
+		<div class="ur container" style="max-width:400px;position:absolute;left:500px;right:500px;top:400px">
+			<div class="ui middle aligned center aligned grid">
+				<div class="column">
+					<h2 class="ui teal image header">
+						<div class="content">遥感植被指数专题信息提取系统</div>
+					</h2>
+					<form class="ui large form" method="post" action="/user/doLogin">
+						<div class="ui  segment">
+							<div class="field">
+								<div class="ui left icon input">
+									<i class="user icon"></i> <input type="text" name="userName"
+										placeholder="用户名">
+								</div>
+							</div>
+							<div class="field">
+								<div class="ui left icon input">
+									<i class="lock icon"></i> <input type="password"
+										name="userPw" placeholder="密码">
+								</div>
+							</div>
+							<button class="ui fluid large teal submit button">登 录</button>
+						</div>
+
+						<div class="ui error mini message"></div>
+					</form>
+				</div>
+			</div>
+
+
+		</div>
+	<!-- </div> -->
+
+
+	<!--/*/<th:block th:replace="_fragments :: script">/*/-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+	   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+
+	<!--/*/</th:block>/*/-->
+
+	<script>
+  $('.ui.form').form({
+    fields : {
+      username : {
+        identifier: 'username',
+        rules: [{
+          type : 'empty',
+          prompt: '请输入用户名'
+        }]
+      },
+      password : {
+        identifier: 'userpass',
+        rules: [{
+          type : 'empty',
+          prompt: '请输入密码'
+        }]
+      }
+    }
+  });
+</script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    backgroundColor: '#000',
+    globe: {
+        baseTexture: "/earth/world.topo.bathy.200401.jpg",
+        heightTexture: "/earth/world.topo.bathy.200401.jpg",
+        displacementScale: 0.04,
+        shading: 'realistic',
+        environment: '/earth/starfield.jpg',
+        realisticMaterial: {
+            roughness: 0.9
+        },
+        postEffect: {
+            enable: true
+        },
+        light: {
+            main: {
+                intensity: 5,
+                shadow: true
+            },
+            ambientCubemap: {
+                texture: '/earth/pisa.hdr',
+                diffuseIntensity: 0.2
+            }
+        }
+    }
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+
+</body>
+</html>

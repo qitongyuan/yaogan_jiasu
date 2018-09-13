@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>工作台</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+<link rel="stylesheet" href="/resource/Tree/bootstrap-treeview.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/fileinput.min.css">
+<link rel="stylesheet"
+	href="/resource/js_css_Upload/fileinput-rtl.min.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/theme.min.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/piexif.min.js">
+<style>
+.bs-callout {
+	padding: 20px;
+	margin: 20px 0;
+	border: 3px solid #eee;
+	border-left-width: 5px;
+	border-radius: 8px;
+}
+
+.bs-callout-info {
+	border-left-color: #ce4844;
+}
+
+.bs-callout-warning {
+	border-left-color: #1b809e;
+}
+</style>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/resource/js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/resource/js/bootstrap.min.js"></script>
+<script src="/resource/Tree/bootstrap-treeview.js"></script>
+<script src="/resource/js_css_Upload/fileinput.min.js"></script>
+<script src="/resource/js_css_Upload/piexif.min.js"></script>
+<script src="/resource/js_css_Upload/sortable.js"></script>
+<script src="/resource/js_css_Upload/theme.min.js"></script>
+<script src="/resource/js_css_Upload/zh.js"></script>
+<script type="text/javascript"
+	src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+<script type="text/javascript"
+	src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+<script type="text/javascript"
+	src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+<script type="text/javascript"
+	src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript"
+	src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript"
+	src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+<script type="text/javascript"
+	src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript"
+	src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+</head>
+
+<body>
+	<div style="padding: 0px; margin: 0px;">
+		<ul class="breadcrumb" style="padding: 0px; padding-left: 10px;">
+			<li><a href="#">首页</a></li>
+			<li>NDVI效果分析</li>
+		</ul>
+	</div>
+	<!-- 上传的红外图像 -->
+	<div class="bs-callout bs-callout-info">
+		<div id="container" style="height: 500px"></div>
+	</div>
+	<div class="bs-callout bs-callout-warning">
+		<div id="container2" style="height: 700px"></div>
+		<div id="container3" style="height: 700px"></div>
+	</div>
+
+	<script type="text/javascript">
+	    /* 获取产品对象的时间 */
+	    var qust_result='${productInfo.productQustResult}';
+	    var ndvi_result='${productInfo.productNDVIResult}';
+	    var strerch_result='${productInfo.productStrerchResult}';
+	    var histequl_result='${productInfo.productHistEqulResult}';
+	    var imhist_result='${productInfo.productImHistResult}';
+	    var product_result='${productInfo.productResult}';
+
+		var dom = document.getElementById("container");
+		var myChart = echarts.init(dom);
+		var app = {};
+		option = null;
+		app.title = 'NDVI函数用时对比图';
+
+		option = {
+			title : {
+				text : 'NDVI函数用时对比图',
+				
+			},
+			tooltip : {
+				trigger : 'axis',
+				axisPointer : {
+					type : 'shadow'
+				}
+			},
+			legend : {
+				data : [ '时间'/* , '并行时间' */ ]
+			},
+			grid : {
+				left : '3%',
+				right : '4%',
+				bottom : '3%',
+				containLabel : true
+			},
+			xAxis : {
+				type : 'value',
+				boundaryGap : [ 0, 0.01 ]
+			},
+			yAxis : {
+				type : 'category',
+				data : [ '图像拉伸', 'NDVI的计算', '二值化', '直方图计算','图像均衡化', '总时间' ]
+			},
+			series : [ {
+				name : '时间',
+				type : 'bar',
+				data : [ strerch_result, ndvi_result, qust_result, imhist_result, histequl_result ,product_result ]
+			}/* , {
+				name : '并行时间',
+				type : 'bar',
+				data : [ 1.6, 2.7, 3.1, 2.59, 3.2,14 ]
+			}  */]
+		};
+		;
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+		}
+	</script>
+	<script type="text/javascript">
+		var dom = document.getElementById("container2");
+		var myChart = echarts.init(dom);
+		var app = {};
+		option = null;
+		option = {
+			title : {
+				text : 'NDVI串行函数用时对比图',
+				x : 'center'
+			},
+			tooltip : {
+				trigger : 'item',
+				formatter : "{a} <br/>{b} : {c} ({d}%)"
+			},
+			legend : {
+				orient : 'vertical',
+				left : 'left',
+				data : [ '图像拉伸', 'NDVI的计算', '二值化显示', '直方图计算','图像均衡化']
+			},
+			series : [ {
+				name : '访问来源',
+				type : 'pie',
+				radius : '55%',
+				center : [ '50%', '60%' ],
+				data : [ {
+					value : strerch_result,
+					name : '图像拉伸'
+				}, {
+					value : ndvi_result,
+					name : 'NDVI的计算'
+				}, {
+					value : qust_result,
+					name : '二值化显示'
+				}, {
+					value : imhist_result,
+					name : '直方图计算'
+				}, {
+					value : histequl_result,
+					name : '图像均衡化'
+				} ],
+				itemStyle : {
+					emphasis : {
+						shadowBlur : 10,
+						shadowOffsetX : 0,
+						shadowColor : 'rgba(0, 0, 0, 0.5)'
+					}
+				}
+			} ]
+		};
+		;
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+
+		}
+	</script>
+<!-- <script type="text/javascript">
+		var dom = document.getElementById("container3");
+		var myChart = echarts.init(dom);
+		var app = {};
+		option = null;
+		option = {
+			title : {
+				text : 'NDVI并行函数用时对比图',
+				x : 'center'
+			},
+			tooltip : {
+				trigger : 'item',
+				formatter : "{a} <br/>{b} : {c} ({d}%)"
+			},
+			legend : {
+				orient : 'vertical',
+				left : 'left',
+				data : ['图像拉伸', 'NDVI的计算', '二值化显示', '直方图计算', '搜索引擎'  ]
+			},
+			series : [ {
+				name : '访问来源',
+				type : 'pie',
+				radius : '55%',
+				center : [ '50%', '60%' ],
+				data : [ {
+					value : 335,
+					name : '图像拉伸'
+				}, {
+					value : 310,
+					name : 'NDVI的计算'
+				}, {
+					value : 234,
+					name : '直方图计算'
+				}, {
+					value : 135,
+					name : '搜索引擎'
+				}],
+				itemStyle : {
+					emphasis : {
+						shadowBlur : 10,
+						shadowOffsetX : 0,
+						shadowColor : 'rgba(0, 0, 0, 0.5)'
+					}
+				}
+			} ]
+		};
+		;
+		if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+		}
+	</script> -->
+
+</body>
+</html>

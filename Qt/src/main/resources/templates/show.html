@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>工作台</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+<link rel="stylesheet" href="/semantic-ui/semantic.min.css">
+<link rel="stylesheet" href="/zoom/css/styles.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/zoom/js/jquery-1.11.0.min.js"></script>
+<!-- <script src="/resource/js/jquery.min.js"></script> -->
+<script src="/semantic-ui/semantic.min.js"></script>
+<script src="/zoom/js/e-smart-zoom-jquery.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/resource/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body>
+	<div style="padding: 0px; margin: 0px;">
+		<ul class="breadcrumb" style="padding: 0px; padding-left: 10px;">
+			<li><a href="#">首页</a></li>
+			<li>图像</li>
+		</ul>
+	</div>
+	<div class="col-xs-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon "></span>近红外图像
+				<button type="button" onclick="zoom('/Local/NIR.bmp')"
+					class="btn btn-link">
+					<span class="glyphicon glyphicon-zoom-in"></span>查看大图
+				</button>
+			</div>
+			<img src="/Local/NIR.bmp" height="100%" width="100%"
+				class="img-thumbnail">
+		</div>
+	</div>
+
+	<div class="col-xs-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon "></span>红外图像
+				<button type="button" onclick="zoom('/Local/Red.bmp')"
+					class="btn btn-link">
+					<span class="glyphicon glyphicon-zoom-in"></span>查看大图
+				</button>
+			</div>
+			<img src="/Local/Red.bmp" height="100%" width="100%"
+				class="img-thumbnail">
+		</div>
+	</div>
+
+	<div class="col-xs-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon "></span>NDVI图像
+				<button type="button" onclick="zoom('/Local/ndvi.bmp')"
+					class="btn btn-link">
+					<span class="glyphicon glyphicon-zoom-in"></span>查看大图
+				</button>
+			</div>
+			<img src="/Local/ndvi.bmp" height="100%" width="100%"
+				class="img-thumbnail">
+		</div>
+	</div>
+
+	<div class="col-xs-5">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon "></span>二值化图像
+				<button type="button" onclick="zoom('/Local/QTSU.bmp')"
+					class="btn btn-link">
+					<span class="glyphicon glyphicon-zoom-in"></span>查看大图
+				</button>
+			</div>
+			<img src="/Local/QTSU.bmp" height="100%" width="100%"
+				class="img-thumbnail">
+		</div>
+	</div>
+    
+    <!-- 模态框-->
+	<div id="example" class="modal" style="display: none;">
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal">×</a>
+		</div>
+		<div class="modal-body">
+			<!-- <img id="zoomImg" src="" height="80%" width="80%" /> -->
+			<div id="page">
+				<div id="pageContent">
+					<div id="imgContainer">
+						<img id="imageFullScreen" src="" />
+					</div>
+					<div id="positionButtonDiv">
+						<p>
+							Zoom : <span> <img id="zoomInButton" class="zoomButton"
+								src="/zoom/icon/zoomIn.png" title="zoom in" alt="zoom in" /> <img
+								id="zoomOutButton" class="zoomButton" src="/zoom/icon/ZoomOut.png"
+								title="zoom out" alt="zoom out" />
+							</span>
+						</p>
+						<p>
+							<span class="positionButtonSpan"> <map name="positionMap"
+									class="positionMapClass">
+									<area id="topPositionMap" shape="rect" coords="20,0,40,20"
+										title="move up" alt="move up" />
+									<area id="leftPositionMap" shape="rect" coords="0,20,20,40"
+										title="move left" alt="move left" />
+									<area id="rightPositionMap" shape="rect" coords="40,20,60,40"
+										title="move right" alt="move right" />
+									<area id="bottomPositionMap" shape="rect" coords="20,40,40,60"
+										title="move bottom" alt="move bottom" />
+								</map> <img src="/zoom/icon/position.png" usemap="#positionMap" />
+							</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-warning" data-dismiss="modal">关
+				闭</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		/* 点击查看大图，对遥感图像进行放大和编辑 */
+		function zoom(str) {
+			//alert(str);
+			$("#imageFullScreen").attr("src", str);
+			$("#example").modal();
+$(document).ready(function() {
+				
+				$('#imageFullScreen').smartZoom({'containerClass':'zoomableContainer'});
+				
+				$('#topPositionMap,#leftPositionMap,#rightPositionMap,#bottomPositionMap').bind("click", moveButtonClickHandler);
+  				$('#zoomInButton,#zoomOutButton').bind("click", zoomButtonClickHandler);
+				
+				function zoomButtonClickHandler(e){
+			    	var scaleToAdd = 0.8;
+					if(e.target.id == 'zoomOutButton')
+						scaleToAdd = -scaleToAdd;
+					$('#imageFullScreen').smartZoom('zoom', scaleToAdd);
+			    }
+			    
+			    function moveButtonClickHandler(e){
+			    	var pixelsToMoveOnX = 0;
+					var pixelsToMoveOnY = 0;
+			
+					switch(e.target.id){
+						case "leftPositionMap":
+							pixelsToMoveOnX = 50;	
+						break;
+						case "rightPositionMap":
+							pixelsToMoveOnX = -50;
+						break;
+						case "topPositionMap":
+							pixelsToMoveOnY = 50;	
+						break;
+						case "bottomPositionMap":
+							pixelsToMoveOnY = -50;	
+						break;
+					}
+					$('#imageFullScreen').smartZoom('pan', pixelsToMoveOnX, pixelsToMoveOnY);
+			    }
+				
+			});
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+EXEC    = testcv.out
+CC      = pgc++ --no_warnings -acc -O0 -ta=tesla::cc50 -Minfo
+SRC     = TestNDVI_bing.cpp
+CCFLASG = 
+CCINC 	= -I/usr/local/include/opencv  -I/usr/local/include  
+CCLIB 	= -L/usr/local/lib -L/usr/lib//x86_64-linux-gnu -lopencv_shape -lopencv_stitching 
+-lopencv_objdetect -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_features2d -lopencv_highgui 
+-lopencv_videoio -lopencv_imgcodecs -lopencv_video -lopencv_photo -lopencv_ml -lopencv_imgproc -lopencv_flann -lopencv_core
+
+all : $(EXEC)
+
+$(EXEC)	: $(SEC)
+	$(CC) -o $(EXEC) $(CCFLAGS) $(CCINC) $(CCLIB) $(SRC)
+clean :
+	rm *.o $(EXEC) -rf

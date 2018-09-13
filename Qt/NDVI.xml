@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0">
+  <Image>
+    <RED>http://10.12.52.155:8081/file_server/upload/201808151741783Red.bmp</RED>
+    <NIR>http://10.12.52.155:8081/file_server/upload/201808151741469NIR.bmp</NIR>
+  </Image>
+  <UerId>1</UerId>
+</rss>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>工作台</title>
+<link href="/res/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/res/css/reset.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/res/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/res/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]>
+		  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+<link rel="icon" type="image/png" href="../res/i/ico.png" sizes="16x16">
+</head>
+<body>
+<script type="text/javascript">
+			function login(){
+				$('#loginTitle').css('color','#337Ab7');
+				$('#loginForm').show();
+				$('#registeTitle').css('color','#000');
+				$('#registeForm').hide();
+			}
+			function registe(){
+				$('#loginTitle').css('color','#000');
+				$('#loginForm').hide();
+				$('#registeTitle').css('color','#337Ab7');
+				$('#registeForm').show();
+			}
+			$(function(){
+				$("#userdetail").popover({
+		            trigger:'manual',
+		            placement : 'bottom',
+		            html: 'true',
+		            content : '<div style="width:300px;height:300px;"></div>',
+		            animation: false
+		        }).on("mouseenter", function () {
+		            var _this = this;
+		            $(this).popover("show");
+		            $(this).siblings(".popover").on("mouseleave", function () {
+		                $(_this).popover('hide');
+		            });
+		        }).on("mouseleave", function () {
+		            var _this = this;
+		            setTimeout(function () {
+		                if (!$(".popover:hover").length) {
+		                    $(_this).popover("hide")
+		                }
+		            }, 0);
+		        });
+				//课程分类展示 
+				$(".category").popover({
+		            trigger:'manual',
+		            placement : 'right',
+		            html: 'true',
+		            content : '',
+		            animation: false
+		        }).on("mouseenter", function () {
+		            var cid = $(this).attr('c-id');
+		            $('#' + cid).show();
+		            $('#' + cid).hover(function(){
+		            	$('#' + cid).show();
+		            },function(){
+		            	$('#' + cid).hide();
+					});
+		        }).on("mouseleave", function () {
+		            var cid = $(this).attr('c-id');
+		            $('#' + cid).hide();
+		        });
+			});
+		</script>
+<div class="f-main">
+			<!-- 轮播 分类-start -->
+			<div class="clearfix">
+				<div class=main-category>
+					<div class="main-bg">
+						<div class="main-bg-item " style="background-image: url('/res/i/11.jpg'); ">
+							<div class="main-title-1"></div>
+						</div>
+		
+						<div class="main-bg-item " style="background-image: url('/res/i/22.jpg'); ">
+							<div class="main-title-2"></div>
+						</div>
+		
+						<div class="main-bg-item " style="background-image: url('/res/i/33.jpg'); ">
+							<div class="main-title-3"></div>
+						</div>
+					</div>
+		
+					<div class="f-nav-box">
+						<div class="bg-nav">
+							<a class="cur"></a> <a></a> <a></a>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+			<!-- 轮播 分类-end -->
+			
+						<!-- 实战推荐-start -->
+			<div class="types-block clearfix">
+				<h3 class="types-title">新闻速递</h3>
+				<div class="types-content">
+					
+					<a href="">
+					<div class="course-card-container">
+						<div class="course-card-top green-bg">
+							<span>技术速递</span>
+						</div>
+
+						<div class="course-card-content">
+							<h1 class="course-card-name">今日的OpenAcc</h1>
+							<!-- <p title="xxxxxxxxxxxxx">xxxxxxxxxxxxxxxxxxxxx</p> -->
+							<h3 class="course-card-name">今日的OpenAcc蓬勃发展</h3>
+							<div class="course-card-bottom">
+								<div class="course-card-info">作者:qty</div>
+							</div>
+						</div>
+					</div>
+					</a>
+
+					<a href="">
+					<div class="course-card-container">
+						<div class="course-card-top pink-bg">
+							<span>遥感今天</span>
+						</div>
+						<div class="course-card-content">
+							<h3 class="course-card-name">农业遥感正在蓬勃发展</h3>
+							<p title="基于AngularJS，仿拉勾网开发一个招聘类的移动端单页应用">农业遥感正在蓬勃发展</p>
+							<div class="clearfix course-card-bottom">
+								<div class="course-card-info">作者:qty</div>
+							</div>
+						</div>
+					</div>
+					</a>
+					
+					<a href="">
+					<div class="course-card-container">
+						<div class="course-card-top brown-bg">
+							<span>关于本站</span>
+						</div>
+	
+						<div class="course-card-content">
+							<h3 class="course-card-name">详情请咨询管理员</h3>
+							<p title="全面掌握django框架,轻松应对python web开发工作">联系方式：1556519392@qq.com</p>
+							<div class="clearfix course-card-bottom">
+								<div class="course-card-info">作者:qty</div>
+							</div>
+						</div>
+					</div>
+					</a>
+	
+					
+					
+				</div>
+			</div>
+			<!-- 实战推荐-end -->
+
+</body>
+	<script>
+	$(function(){
+		var index = 0;
+		var timer = 4000;
+		$('.bg-nav a').click(function(){
+			index = $('.bg-nav a').index($(this));
+			rollBg(index);
+		});
+		$('.index-roll-item').click(function(){
+			index = $('.index-roll-item').index($(this));
+			rollBg(index);
+		});
+		var rollBg = function(i){
+			$('.main-bg-item').fadeOut(1000);
+			$($('.main-bg-item')[i]).fadeIn(1000);
+			$('.bg-nav a').removeClass('cur');
+			$($('.bg-nav a')[i]).addClass('cur');
+			$('.index-roll-item').removeClass('cur');
+			$($('.index-roll-item')[i]).addClass('cur');
+		}
+		setInterval(function(){
+			index += 1;
+			index = index%3;
+			rollBg(index);
+		}, timer);
+		
+	});
+	</script>
+</html>

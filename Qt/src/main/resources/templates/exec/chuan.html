@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>工作台</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+<link rel="stylesheet" href="/semantic-ui/semantic.min.css">
+<link rel="stylesheet" href="/resource/Tree/bootstrap-treeview.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/fileinput.min.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/fileinput-rtl.min.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/theme.min.css">
+<link rel="stylesheet" href="/resource/js_css_Upload/piexif.min.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/resource/js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/resource/js/bootstrap.min.js"></script>
+<script src="/semantic-ui/semantic.min.js"></script>
+<script src="/resource/Tree/bootstrap-treeview.js"></script>
+<script src="/resource/js_css_Upload/fileinput.min.js"></script>
+<script src="/resource/js_css_Upload/piexif.min.js"></script>
+<script src="/resource/js_css_Upload/sortable.js"></script>
+<script src="/resource/js_css_Upload/theme.min.js"></script>
+<script src="/resource/js_css_Upload/zh.js"></script>
+</head>
+
+<body>
+<div style="padding:0px; margin:0px;">
+ <ul class="breadcrumb" style=" padding:0px; padding-left:10px;" >
+  <li ><a href="#">首页</a></li>
+  <li>图像上传</li>
+</ul>
+</div>
+	<h1 class="ui horizontal inverted divider"><p class="text-muted">NDVI算法</p></h1> 
+	<h2 class="ui horizontal inverted divider"></h2> 
+	<h2 class="ui horizontal inverted divider"></h2>
+    <!-- 上传的红外图像 -->
+	<div class="col-xs-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<span class="glyphicon "></span>红外波段图
+			</div>
+			<input id="uploadRed" name="Red" type="file" class="file" data-allowed-file-extensions='["jpg","png","bmp","tif","jpg"]'/>
+		</div>
+	</div>
+	<!-- 上传的近红外图像 -->
+	<div class="col-xs-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<span class="glyphicon "></span>近红外波段图
+			</div>
+			<input id="uploadNir" name="Nir" type="file" class="file" data-allowed-file-extensions='["jpg","png","bmp","tif","jpg"]'/>
+		</div>
+	</div>
+	<!-- 分割线 -->
+<!-- 	<h1 class="ui horizontal inverted divider"><p class="text-muted">——————</p></h1> 
+	<h2 class="ui horizontal inverted divider"></h2> 
+	<h2 class="ui horizontal inverted divider"></h2> 
+	<h2 class="ui horizontal inverted divider"></h2> 
+	<h2 class="ui horizontal inverted divider"><p class="text-muted">已选中的图片</p></h2> -->
+     
+<!-- 	<div class="col-xs-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon "></span>红外图像
+			</div>
+			<img id="RedShow" src="" height="100%" width="100%"
+				class="img-thumbnail">
+		</div>
+	</div>
+
+	<div class="col-xs-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="glyphicon "></span>近红外图像
+			</div>
+			<img src="" height="100%" width="100%"
+				class="img-thumbnail">
+		</div>
+	</div> -->
+	<!-- 选择服务器配置 -->
+	<!-- 服务器1 -->
+<!-- 		<div style="background-color: lightwhite; width: 300px; border: 1px solid black; padding: 25px; margin: 50px; float:left;clear:right;">
+			<div class="ui card"
+				data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+				<div class="image">
+					<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+				</div>
+				<div class="content">
+					<div class="header">曾宪梓四楼高性能工作站</div>
+					<div class="description">两块Quadro M4000显卡  GPU计算能力为5.2</div>
+				</div>
+				<div class="ui two bottom attached buttons">
+					<div id="test_connect" class="ui button">
+						<i class="add icon"></i> 测试
+					</div>
+					<div id="sendXml" class="ui primary button">
+						<i class="play icon"></i> 执行
+					</div>
+				</div>
+			</div>
+		</div>
+		服务器2
+	<div style=" background-color: lightwhite;width: 300px;border: 1px solid black;padding: 25px;margin: 50px;float:left;clear:right;">
+	<div class="ui card"
+		data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+		<div class="image">
+			<img src="/img/gaoxingneng.jpg" height="100%" width="100%">
+		</div>
+		<div class="content">
+			<div class="header">尚未配备</div>
+			<div class="description">机器正在筹备，敬请期待  欢迎你的使用</div>
+		</div>
+		<div class="ui two bottom attached buttons">
+			<div class="ui button">
+				<i class="add icon"></i> 测试
+			</div>
+			<div class="ui primary button">
+				<i class="play icon"></i>  执行
+			</div>
+		</div>
+	</div>
+	</div>
+	服务器3
+	<div style=" background-color: lightwhite;width: 300px;border: 1px solid black;padding: 25px;margin: 50px;float:left;clear:right;">
+	<div class="ui card"
+		data-html="<div class='header'>User Rating</div><div class='content'><div class='ui star rating'><i class='active icon'></i><i class='active icon'></i><i class='active icon'></i><i class='icon'></i><i class='icon'></i></div></div>">
+		<div class="image">
+			<img src="/img/gaoxingneng.jpg" height="100%" width="100%" >
+		</div>
+		<div class="content">
+			<div class="header">尚未配备</div>
+			<div class="description">机器正在配置环境，敬请期待     欢迎你的使用 </div>
+		</div>
+		<div class="ui two bottom attached buttons">
+			<div class="ui button">
+				<i class="add icon"></i> 测试
+			</div>
+			<div class="ui primary button">
+				<i class="play icon"></i> 执行
+			</div>
+		</div>
+	</div>
+	</div> -->
+
+	<script type="text/javascript">
+	  
+		$("#test_connect").click(function() {
+			/* 向服务器发送测试指令，看能与Linux服务器建立链接不 */
+			$.ajax({
+				type : 'POST',
+				url : "/exec/testConnect",
+				success : function(data) {
+					alert(data);
+				},
+				error:function(){
+					alert("连接失败，请与管理员进行联系");
+				}
+			});
+		});
+		
+		$("#sendXml").click(function() {
+			/* 向服务器发送测试指令，看能与Linux服务器建立链接不 */
+			$.ajax({
+				type : 'POST',
+				url : "/exec/sendXml",
+				success : function(data) {
+					alert(data);
+				},
+				error:function(){
+					alert("请先上传图像，谢谢");
+				}
+			});
+		});
+	</script>
+	<script type="text/javascript">
+	  $("#uploadRed").fileinput({
+		    language: 'zh', //设置语言
+		    uploadUrl: "/upload/Red", //上传的地址
+		    allowedFileExtensions: ['jpg','png','bmp','tif'],//接收的文件后缀
+		    uploadAsync: true, //默认异步上传
+		    showUpload: true, //是否显示上传按钮  
+		    showRemove : true, //显示移除按钮
+		    showPreview : true, //是否显示预览
+		    showCaption: false,//是否显示标题
+		    maxFileSize: 0,  //不限大小
+		    browseClass: "btn btn-primary", //按钮样式     
+		    dropZoneEnabled: true,//是否显示拖拽区域
+		    maxFileCount: 1, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true
+	  }).on('filepreupload', function(event, data, previewId, index) {     //上传中
+          var form = data.form, files = data.files, extra = data.extra,
+          response = data.response, reader = data.reader;
+          console.log('文件正在上传');
+      }).on("fileuploaded", function (event, data, previewId, index) {    //一个文件上传成功
+          console.log('文件上传成功！'+data.id);
+      }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
+          console.log('文件上传失败！'+data.id);
+      });
+	</script>
+	
+		<script type="text/javascript">
+	  $("#uploadNir").fileinput({
+		    language: 'zh', //设置语言
+		    uploadUrl: "/upload/Nir", //上传的地址
+		    allowedFileExtensions: ['jpg','png','bmp','tif'],//接收的文件后缀
+		    uploadAsync: true, //默认异步上传
+		    showUpload: true, //是否显示上传按钮  
+		    showRemove : true, //显示移除按钮
+		    showPreview : true, //是否显示预览
+		    showCaption: false,//是否显示标题
+		    maxFileSize: 0,  //不限大小
+		    browseClass: "btn btn-primary", //按钮样式     
+		    dropZoneEnabled: true,//是否显示拖拽区域
+		    maxFileCount: 1, //表示允许同时上传的最大文件个数
+            enctype: 'multipart/form-data',
+            validateInitialCount:true
+	  }).on('filepreupload', function(event, data, previewId, index) {     //上传中
+          var form = data.form, files = data.files, extra = data.extra,
+          response = data.response, reader = data.reader;
+          console.log('文件正在上传');
+      }).on("fileuploaded", function (event, data, previewId, index) {    //一个文件上传成功
+          console.log('文件上传成功！'+data.id);
+
+      }).on('fileerror', function(event, data, msg) {  //一个文件上传失败
+          console.log('文件上传失败！'+data.id);
+      });
+	</script>
+
+</body>
+</html>

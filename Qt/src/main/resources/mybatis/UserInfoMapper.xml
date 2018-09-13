@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qty.dao.UserInfoMapper">
+	<resultMap type="UserInfo" id="usermap">
+		<id column="user_id" property="userId"></id>
+		<result column="user_name" property="userName"></result>
+		<result column="user_pw" property="userPw"></result>
+	</resultMap>
+
+	<select id="getUserInfo" parameterType="UserInfo" resultMap="usermap">
+		select * from userinfo 
+ 		<where>
+			<!-- <if test="userId!=null and userId!=''"> -->
+				<!-- and user_id=#{userId} -->
+			<!-- </if> -->
+			<!-- <if test="userName!=null and userName!=''"> -->
+				and user_name=#{userName}
+			<!-- </if> -->
+			<!-- <if test="userPw!=null and userPw!=''"> -->
+				and user_pw=#{userPw}
+			<!-- </if> -->
+		</where>
+	</select> 
+</mapper>

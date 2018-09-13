@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>历史记录</title>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+<link rel="stylesheet" href="/semantic-ui/semantic.min.css">
+<link rel="stylesheet" href="/zoom/css/styles.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="/zoom/js/jquery-1.11.0.min.js"></script>
+<!-- <script src="/resource/js/jquery.min.js"></script> -->
+<script src="/semantic-ui/semantic.min.js"></script>
+<script src="/zoom/js/e-smart-zoom-jquery.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/resource/js/bootstrap.min.js"></script>
+<!--[if lt IE 9]>
+			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body>
+	<div style="padding: 0px; margin: 0px;">
+		<ul class="breadcrumb" style="padding: 0px; padding-left: 10px;">
+			<li><a href="#">首页</a></li>
+			<li>历史并行记录</li>
+		</ul>
+	</div>
+	<table class="table">
+	<caption><h1>生产记录</h1></caption>
+	<table class="table table-hover table-condensed">
+	<thead>
+		<tr>
+			<th>影像大小</th>
+			<th>生产日期</th>
+			<th>串行/并行</th>
+			<th>二值化耗时(s)</th>
+			<th>NDVI计算耗时(s)</th>
+			<th>直方图计算耗时(s)</th>
+			<th>图像拉伸耗时(s)</th>
+			<th>图像均衡化耗时(s)</th>
+			<th>生产总耗时(s)</th>
+			<th>近红外图像</th>
+			<th>红外图像</th>
+			<th style="text-align:center;">图像展示</th>
+			<th style="text-align:center;">二维可视化分析</th>
+		</tr>
+	</thead>
+	<tbody>
+	    <#list (pageBean.list)! as p>
+		<tr id="color" class="warning">
+			<td>${(p.productSize)!}</td>
+			<td>${(p.productTime)!}</td>
+			<!-- <td>${(p.productStatus)!}</td> -->
+			<td id="status"><#if p.productStatus??>
+							<#if p.productStatus == '0'>
+								并行
+							</#if>
+							<#if p.productStatus == '1'>
+								串行
+							</#if>
+						</#if></td>
+			<td>${(p.productQustResult)!}</td>
+			<td>${(p.productNDVIResult)!}</td>
+			<td>${(p.productImHistResult)!}</td>
+			<td>${(p.productStrerchResult)!}</td>
+			<td>${(p.productHistEqulResult)!}</td>
+			<td>${(p.productResult)!}</td>
+			<td><img alt="正在加载。。" src="${(p.productNirImage)!}" width="80px" height="50px"></td>
+			<td><img alt="正在加载。。" src="${(p.productRedImage)!}" width="80px" height="50px"></td>
+			<td style="text-align:center;"><a href="/user/showEach?productId=${(p.productId)!}">查看</a></td>
+			<td style="text-align:center;"><a href="/exec/analy?productId=${(p.productId)!}">查看</a></td>
+		</tr>
+		</#list>
+	</tbody>
+	</table>
+	共有 ${pageBean.allRow}条记录，当前是${pageBean.currentPage}/${pageBean.totalPage}页
+	
+		<ul class="pager">
+			<#if pageBean.currentPage==1> 第一页 上一页 <#else>
+			<li><a
+				href="/user/history?page=1&userId=${loginUser.userId}">第一页</a></li>
+			<li><a
+				href="/user/history?page=${pageBean.currentPage-1}&userId=${loginUser.userId}">上一页</a></li></#if>
+
+			<#if pageBean.currentPage==pageBean.totalPage> 下一页 末页 <#else>
+			<li><a
+				href="/user/history?page=${pageBean.currentPage+1}&userId=${loginUser.userId}">下一页</a></li>
+			<li><a
+				href="/user/history?page=${pageBean.totalPage}&userId=${loginUser.userId}">末页</a></li></#if>
+		</ul>
+	</table>
+<!-- 	<script type="text/javascript">
+	$(document).ready(addColor);
+	    function addColor(){
+	    	var trSeq = $(this).parent().parent().find("tr").index($(this).parent()[0]); 
+	    	$.each();
+	    	if(status=='1'){
+	    		$("#color").addClass("danger");
+	    	}
+	    }
+	   
+	</script> -->
+</body>
+</html>
